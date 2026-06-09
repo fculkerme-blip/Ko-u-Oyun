@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#6c5ce7" />
+  <title>Renkli Çarpım Koşusu</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="game-card" aria-label="Renkli Çarpım Koşusu oyunu">
+      <canvas id="gameCanvas" aria-label="Çarpım tablosu koşu oyunu" role="img"></canvas>
+
+      <div class="hud" aria-live="polite">
+        <div class="hud-pill"><span>Seviye</span><strong id="levelText">1</strong></div>
+        <div class="hud-pill"><span>Coin</span><strong id="coinText">0</strong></div>
+        <div class="hud-pill"><span>Boy</span><strong id="sizeText">1.0x</strong></div>
+        <div class="hud-pill question-pill"><span>Soru</span><strong id="questionText">2 × 3 = ?</strong></div>
+      </div>
+
+      <div class="mobile-controls" aria-label="Mobil kontroller">
+        <button id="leftBtn" type="button" aria-label="Sola git">◀</button>
+        <button id="pauseBtn" type="button" aria-label="Duraklat veya devam et">Ⅱ</button>
+        <button id="rightBtn" type="button" aria-label="Sağa git">▶</button>
+      </div>
+
+      <div id="menuScreen" class="screen active">
+        <div class="panel big-panel">
+          <p class="eyebrow">Çarpım Tablosu Oyunu</p>
+          <h1>Renkli Çarpım Koşusu</h1>
+          <p class="lead">Doğru cevabın olduğu kapıdan geç, kendi rengindeki karakterleri topla, duvarlardan kaç ve bölüm sonundaki rakibi geçecek kadar büyü.</p>
+
+          <div class="settings-grid">
+            <div class="setting-card">
+              <h2>Çalışılacak çarpım tabloları</h2>
+              <div id="tablePicker" class="table-picker" aria-label="Çarpım tablosu seçimi"></div>
+              <div class="tiny-actions">
+                <button id="selectAllBtn" type="button" class="link-btn">Hepsini seç</button>
+                <button id="selectNoneBtn" type="button" class="link-btn">Temizle</button>
+              </div>
+            </div>
+            <div class="setting-card howto">
+              <h2>Nasıl oynanır?</h2>
+              <ul>
+                <li><kbd>←</kbd> <kbd>→</kbd> veya sürükleme ile hareket et.</li>
+                <li>Doğru cevap kapısı büyütür, yanlış cevap bölümü sıfırlar.</li>
+                <li>Aynı renk +boy, farklı renk -boy.</li>
+                <li>Coin topla, mağazadan şapka aç.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="action-row">
+            <button id="startBtn" type="button" class="primary">Oyuna Başla</button>
+            <button id="shopOpenBtn" type="button">Şapka Mağazası</button>
+          </div>
+          <p class="small-note">GitHub Pages uyumlu: sadece HTML, CSS ve JavaScript.</p>
+        </div>
+      </div>
+
+      <div id="messageScreen" class="screen">
+        <div class="panel message-panel">
+          <p id="messageKicker" class="eyebrow">Seviye tamamlandı</p>
+          <h2 id="messageTitle">Harika!</h2>
+          <p id="messageBody">Bir sonraki bölüme geçebilirsin.</p>
+          <div class="action-row centered">
+            <button id="continueBtn" type="button" class="primary">Devam</button>
+            <button id="retryBtn" type="button">Tekrar Dene</button>
+            <button id="homeBtn" type="button">Ana Menü</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="shopScreen" class="screen">
+        <div class="panel shop-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Mağaza</p>
+              <h2>Şapka seç</h2>
+            </div>
+            <button id="shopCloseBtn" type="button" class="icon-btn" aria-label="Mağazayı kapat">×</button>
+          </div>
+          <p class="shop-info">Coin: <strong id="shopCoinText">0</strong> · Bazı şapkalar seviye ilerledikçe açılır.</p>
+          <div id="hatGrid" class="hat-grid" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
